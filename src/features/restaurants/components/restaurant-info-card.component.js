@@ -4,6 +4,7 @@ import { Text, Image, View } from "react-native";
 import { Card } from "react-native-paper";
 import { SvgXml } from "react-native-svg";
 
+import { Spacer } from "../../../components/spacer/spacer.component";
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
 
@@ -36,10 +37,12 @@ const Rating = styled.View`
   padding-top: ${(props) => props.theme.space[2]};
   padding-bottom: ${(props) => props.theme.space[2]};
 `;
+
 const Section = styled.View`
   flex-direction: row;
   align-items: center;
 `;
+
 const SectionEnd = styled.View`
   flex: 1;
   flex-direction: row;
@@ -68,8 +71,8 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
         <Title>{name}</Title>
         <Section>
           <Rating>
-            {ratingArray.map((element) => (
-              <SvgXml key={element} xml={star} width={20} height={20} />
+            {ratingArray.map(() => (
+              <SvgXml xml={star} width={20} height={20} />
             ))}
           </Rating>
           <SectionEnd>
@@ -78,9 +81,9 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
                 CLOSED TEMPORARILY
               </Text>
             )}
-            <View style={{ paddingLeft: 16 }} />
+            <Spacer variant="left.large" />
             {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
-            <View style={{ paddingLeft: 16 }} />
+            <Spacer variant="left.large" />
             <Image style={{ width: 15, height: 15 }} source={{ uri: icon }} />
           </SectionEnd>
         </Section>
